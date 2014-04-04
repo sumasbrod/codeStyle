@@ -42,10 +42,10 @@ namespace ItWebNet.SomeTech.SomeFeuture
 
         //Префикс _ для приватных переменных
         private int _number;
-        
-        public enum Color 
+
+        public enum Color
         {
-			NoSet = 0,
+            NoSet = 0,
             Red,
             Green,
             Blue,
@@ -55,7 +55,7 @@ namespace ItWebNet.SomeTech.SomeFeuture
         //Camel case для локальных переменных и аргументов методов
         public void SomeMethod(int someNumber = 0)
         {
-			string longString = @"Очень Очень Очень Очень Очень Очень 
+            string longString = @"Очень Очень Очень Очень Очень Очень 
 			Очень Очень Очень Очень Очень Очень Очень Очень
 			Очень Длинная Строка";
 
@@ -72,24 +72,24 @@ namespace ItWebNet.SomeTech.SomeFeuture
             if (
                     condition
                     || secondCondition
-                    || 
-					(
+                    ||
+                    (
                         one + more * another / condition
                     )
                     && oneMoreCondition
-                ) 
+                )
             {
                 throw new SomeException("Example of exception");
             }
-            else 
+            else
             {
                 //Вызов метода с кучей параметров
                 LongNameMethod
-				(
+                (
                     firstParametr,
                     secondParametr,
                     AnotherLongMethod
-					(
+                    (
                         foo,
                         bah
                     ),
@@ -97,21 +97,21 @@ namespace ItWebNet.SomeTech.SomeFeuture
                 );
 
                 //Каскадный вызов методов
-                var cascadeMethodCall = 
-					FirstMethod()
-					.SecondMethod()
-					.ThirdMethod();
+                var cascadeMethodCall =
+                    FirstMethod()
+                    .SecondMethod()
+                    .ThirdMethod();
 
             }
 
             //Тернарный оператор
-            int yetNumber = 
+            int yetNumber =
                 (parameter)
                     ? first
                     : second;
 
             //Всегда описываем default в switch
-            switch (number) 
+            switch (number)
             {
                 case 1:
                     Trace.WriteLine("Case 1:");
@@ -127,7 +127,7 @@ namespace ItWebNet.SomeTech.SomeFeuture
             /*****************************ПРИМЕРЫ*********************************/
             //Плохо
             List<string> actionsGroupNamesToProcess = submittedActionResults.Select(ar => ar.GroupName)
-				.Union(requestedActionsGroups.Select(ag => ag.Name)).Distinct().ToList();
+                .Union(requestedActionsGroups.Select(ag => ag.Name)).Distinct().ToList();
             //Лучше
             List<string> actionsGroupNamesToProcess =
                 submittedActionResults
@@ -142,7 +142,7 @@ namespace ItWebNet.SomeTech.SomeFeuture
             //Плохо
             var actionsGroupErrors = ProcessActionsGroup(actionsGroup, withParams, submittedActionResults.Where(x => x.GroupName == actionsGroupName).ToList());
             //Лучше
-            var actionsGroupErrors = 
+            var actionsGroupErrors =
                 ProcessActionsGroup
                 (
                     actionsGroup,
@@ -155,26 +155,26 @@ namespace ItWebNet.SomeTech.SomeFeuture
             var invalidValueControls = vg.Controls.Where(c => (c.Validators.FirstOrDefault(v => v.Method == EValidatorMethod.controlvalue && v.ValidationGroup == vg1.Name && v.Enabled) != null) &&
                                                                           (!c.Validators.FirstOrDefault(v => v.Method == EValidatorMethod.controlvalue && v.ValidationGroup == vg1.Name && v.Enabled).IsValid)).ToList();
             //Лучше
-            var invalidValueControls = 
+            var invalidValueControls =
                 vg.Controls.Where
                 (
-                    c => 
+                    c =>
                     (
-                        c.Validators.FirstOrDefault 
+                        c.Validators.FirstOrDefault
                         (
-                            v => 
-                                v.Method == EValidatorMethod.controlvalue 
-                                && v.ValidationGroup == vg1.Name 
+                            v =>
+                                v.Method == EValidatorMethod.controlvalue
+                                && v.ValidationGroup == vg1.Name
                                 && v.Enabled
                         ) != null
-                    ) 
-                    && 
+                    )
+                    &&
                     (
                         !c.Validators.FirstOrDefault
                         (
-                            v => 
-                                v.Method == EValidatorMethod.controlvalue 
-                                && v.ValidationGroup == vg1.Name 
+                            v =>
+                                v.Method == EValidatorMethod.controlvalue
+                                && v.ValidationGroup == vg1.Name
                                 && v.Enabled
                         )
                         .IsValid
@@ -190,13 +190,13 @@ namespace ItWebNet.SomeTech.SomeFeuture
 
             //Лучше
             if (
-                carVINEmpty != null 
+                carVINEmpty != null
                 && LinkedPolicy.LinkedContent.Controls.TryGetValue
                     (
                         carVINEmpty.Value,
                         out sourceControls
-                    ) 
-                && sourceControls != null 
+                    )
+                && sourceControls != null
                 && sourceControls.Count == 1
             )
             {
@@ -205,18 +205,18 @@ namespace ItWebNet.SomeTech.SomeFeuture
 
             //Плохо
             while (firstRun ||
-                Context.Count > 0 || Context.Count > 0 || 
+                Context.Count > 0 || Context.Count > 0 ||
                 (Context.ToProcessActionsGroup != null && !string.IsNullOrEmpty(Context.ToProcessActionsGroup.Name)) ||
                 Context.Policy.PinnedStatusChanged || Context.Policy.PinnedCalcResultsChanged || Context.Policy.PinnedPacketChanged)
             { }
 
-			//Лучше
-            while 
+            //Лучше
+            while
             (
                 firstRun
                 || Context.ToProcessChangedItems.Count > 0
                 || Context.ToProcessChangedParams.Count > 0
-                || 
+                ||
                 (
                     Context.ToProcessActionsGroup != null
                     && !string.IsNullOrEmpty(Context.ToProcessActionsGroup.Name)
@@ -227,17 +227,17 @@ namespace ItWebNet.SomeTech.SomeFeuture
             )
             { }
 
-			var a = allPacketNames
-				.Select
+            var a = allPacketNames
+                .Select
                 (
-					x => packet_control(x, "primaryBrokerKV").Value
-				)
-				.Max
+                    x => packet_control(x, "primaryBrokerKV").Value
+                )
+                .Max
                 (
-					x => x.IsInt ? x : (ControlValue)(o)
-				);
+                    x => x.IsInt ? x : (ControlValue)(o)
+                );
             /*****************************КОНЕЦ*********************************/
-			
+
 
         }
 
@@ -264,7 +264,7 @@ namespace ItWebNet.SomeTech.SomeFeuture
     public class SomeException : Exception
     {
         public SomeException(string exceptionText)
-        {}
+        { }
     }
 
     //Лучше перегружать методы имеющие значение по умлочанию
@@ -283,7 +283,7 @@ namespace ItWebNet.SomeTech.SomeFeuture
         {
             MyMethod(123);
         }
-        
+
         //При использовании атрибутов по умолчанию, всегда присваиваем им неизменные константы,
         //такие как null,false или 0
         void MyMethod(int number = 0)
